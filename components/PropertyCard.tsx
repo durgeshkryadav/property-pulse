@@ -9,6 +9,22 @@ import {
   FaMapMarker,
 } from "react-icons/fa";
 
+export interface IRates {
+  weekly: number;
+  monthly: number;
+  nightly: number;
+}
+export interface ISellerInfo {
+  name: string;
+  email: string;
+  phone: string;
+}
+export interface ILocations {
+  street: string;
+  city: string;
+  state: string;
+  zipcode: string;
+}
 export interface IPropertyProps {
   property: {
     _id: string;
@@ -16,26 +32,13 @@ export interface IPropertyProps {
     name: string;
     type: string;
     description: string;
-    location: {
-      street: string;
-      city: string;
-      state: string;
-      zipcode: string;
-    };
+    location: ILocations;
     beds: string;
     baths: string;
     square_feet: string;
     amenities: string[];
-    rates: {
-      weekly: number;
-      monthly: number;
-      nightly: number;
-    };
-    seller_info: {
-      name: string;
-      email: string;
-      phone: string;
-    };
+    rates: IRates;
+    seller_info: ISellerInfo;
     images: string[];
     is_featured: boolean;
     createdAt: Date;
