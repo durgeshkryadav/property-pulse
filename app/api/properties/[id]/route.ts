@@ -1,11 +1,10 @@
 import connectDB from "@/config/database";
 import Property from '@/models/Property';
-import { Schema } from "mongoose";
 
 export const GET = async (request: any, { params }: any) => {
   try {
     await connectDB();
-    const property = await Property.findOne({id:params.id});
+    const property = await Property.findOne({_id:params.id});
     if (property !== null) {
       return new Response(JSON.stringify(property), { status: 200 });
     } else {

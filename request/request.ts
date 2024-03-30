@@ -28,12 +28,13 @@ const getProperty = async (id:string) => {
       console.log("apiDomain is null");
       return {};
     }
-    const response: AxiosResponse<IProperty[]> = await axios.get<IProperty[]>(
+    const response: AxiosResponse<IProperty> = await axios.get<IProperty>(
       `${apiDomain}/properties/${id}`
     );
     if (!response.data) {
       throw new Error("Something went wrong, property not found");
     }
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);

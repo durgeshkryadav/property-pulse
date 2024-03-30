@@ -12,10 +12,11 @@ const PropertyHeaderImage = ({ image }: IPropertyHeaderImageprops) => {
         <div className='grid grid-cols-1'>
           <Image
             src={`/images/properties/${image}`}
+            width={0}
             height={0}
             alt=''
+            sizes="100vw"
             className='object-cover h-[400px] w-full'
-            width='1800'
           />
         </div>
       </div>
