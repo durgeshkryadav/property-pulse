@@ -1,7 +1,9 @@
 import { IProperty } from "@/interfaces/IProperty";
 import axios, { AxiosResponse } from "axios";
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
-const fetchProperties = async () => {
+
+//Fetch all properties
+const getAllProperties = async () => {
   try {
     if (!apiDomain) {
       console.log("apiDomain is null");
@@ -19,4 +21,22 @@ const fetchProperties = async () => {
   }
 };
 
-export { fetchProperties };
+//fetch single property
+const getProperty = async (id:string) => {
+  try {
+    if (!apiDomain) {
+      console.log("apiDomain is null");
+      return {};
+    }
+    const response: AxiosResponse<IProperty[]> = await axios.get<IProperty[]>(
+      `${apiDomain}/properties/${id}`
+    );
+    if (!response.data) {
+      throw new Error("Something went wrong, property not found");
+    }
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+export { getAllProperties, getProperty };

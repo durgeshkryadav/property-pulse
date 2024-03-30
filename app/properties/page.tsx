@@ -1,9 +1,9 @@
 import React from "react";
 import PropertyCard from "@/components/PropertyCard";
-import { fetchProperties } from "@/request/request";
+import { getAllProperties } from "@/request/request";
 
 const Properties = async () => {
-  const propperties = await fetchProperties();
+  const propperties = await getAllProperties();
   //sort by date
   propperties?.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -17,7 +17,6 @@ const Properties = async () => {
               <div>No properties found</div>
             ) : (
               propperties.map((propperty, index) => {
-                // console.log(propperty);
                 return (
                   <PropertyCard key={propperty._id} property={propperty} />
                 );

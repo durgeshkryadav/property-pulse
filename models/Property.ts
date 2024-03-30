@@ -1,9 +1,8 @@
-import { Schema, model, Document, Types, Model } from 'mongoose';
+import { Schema, model, Document, Types, models, Model} from 'mongoose';
 
-// Interface for Property document
-export interface Property extends Document {
-  _id: string; // Include _id field
-  owner: Types.ObjectId; // Reference to User schema
+interface Property extends Document {
+  _id: Schema.Types.ObjectId;
+  owner: Types.ObjectId;
   name: string;
   type: string;
   description?: string;
@@ -31,69 +30,63 @@ export interface Property extends Document {
   is_featured: boolean;
 }
 
-// Define Property schema
-const propertySchema = new Schema<Property>({
-  _id: { type: String }, // Define _id as a string type
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
+const PropertySchema = new Schema<Property>(
+  {
+    _id: { type:Schema.Types.ObjectId  }, // Define _id as a string type
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
+    description: String,
+    location: {
+      street: String,
+      city: String,
+      state: String,
+      zipcode: String,
+    },
+    beds: {
+      type: Number,
+      required: true,
+    },
+    baths: {
+      type: Number,
+      required: true,
+    },
+    square_feet: {
+      type: Number,
+      required: true,
+    },
+    amenities: [String],
+    rates: {
+      nightly: Number,
+      weekly: Number,
+      monthly: Number,
+    },
+    seller_info: {
+      name: String,
+      email: String,
+      phone: String,
+    },
+    images: [String],
+    is_featured: {
+      type: Boolean,
+      default: false,
+    },
   },
-  name: {
-    type: String,
-    required: true,
-  },
-  type: {
-    type: String,
-    required: true,
-  },
-  description: String,
-  location: {
-    street: String,
-    city: String,
-    state: String,
-    zipcode: String,
-  },
-  beds: {
-    type: Number,
-    required: true,
-  },
-  baths: {
-    type: Number,
-    required: true,
-  },
-  square_feet: {
-    type: Number,
-    required: true,
-  },
-  amenities: [String],
-  rates: {
-    nightly: Number,
-    weekly: Number,
-    monthly: Number,
-  },
-  seller_info: {
-    name: String,
-    email: String,
-    phone: String,
-  },
-  images: [String],
-  is_featured: {
-    type: Boolean,
-    default: false,
-  },
-}, {
-  timestamps: true, // Automatically add createdAt and updatedAt fields
-});
+  {
+    timestamps: true,
+  }
+);
 
-// Create a model using the schema
-let PropertyModel: Model<Property>;
+const Property: Model<Property> =models.Property || model<Property>('Property', PropertySchema);
 
-try {
-  // Try to retrieve the existing model
-  PropertyModel = model<Property>('Property');
-} catch (error) {
-  // If the model doesn't exist, define it
-  PropertyModel = model<Property>('Property', propertySchema);
-}
-export default PropertyModel;
+export default Property;
