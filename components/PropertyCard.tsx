@@ -45,7 +45,7 @@ const PropertyCard = ({ property }: IPropertyProps) => {
         <div className='flex justify-center gap-4 text-gray-500 mb-4'>
           {property.beds && (
             <p>
-              <FaBed className='inline mr-2' /> {property.beds} Beds
+              <FaBed className='inline mr-2' /> {property.beds}Beds
             </p>
           )}
           {property.baths && (
@@ -90,7 +90,7 @@ const PropertyCard = ({ property }: IPropertyProps) => {
             href={`properties/${property._id}`}
             className='h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm'>
             Details
-          </Link>
+                      </Link>
         </div>
       </div>
     </div>

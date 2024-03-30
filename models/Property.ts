@@ -2,6 +2,7 @@ import { Schema, model, Document, Types, Model } from 'mongoose';
 
 // Interface for Property document
 export interface Property extends Document {
+  _id: string; // Include _id field
   owner: Types.ObjectId; // Reference to User schema
   name: string;
   type: string;
@@ -32,6 +33,7 @@ export interface Property extends Document {
 
 // Define Property schema
 const propertySchema = new Schema<Property>({
+  _id: { type: String }, // Define _id as a string type
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User',

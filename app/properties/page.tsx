@@ -17,6 +17,7 @@ const Properties = async () => {
               <div>No properties found</div>
             ) : (
               propperties.map((propperty, index) => {
+                // console.log(propperty);
                 return (
                   <PropertyCard key={propperty._id} property={propperty} />
                 );
