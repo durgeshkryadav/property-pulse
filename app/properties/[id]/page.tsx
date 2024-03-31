@@ -13,19 +13,19 @@ const PropertyPage = async () => {
   const [property, setProperty] = useState<IProperty | null>(null);
   const [isLoading, setIsLoading] = useState<boolean | undefined>(false);
 
-  const getpropertyAsync = async () => {
-    setIsLoading(true);
-    if (!id) return;
-    try {
-      const response = await getProperty(id as string);
-      setProperty(response as IProperty);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
   useEffect(() => {
+    const getpropertyAsync = async () => {
+      setIsLoading(true);
+      if (!id) return;
+      try {
+        const response = await getProperty(id as string);
+        setProperty(response as IProperty);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
     if (property === null) {
       getpropertyAsync();
     }

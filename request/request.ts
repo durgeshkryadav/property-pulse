@@ -21,7 +21,7 @@ const getAllProperties = async () => {
   }
 };
 
-//Fetch single property
+//fetch single property
 const getProperty = async (id:string) => {
   try {
     if (!apiDomain) {
