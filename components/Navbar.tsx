@@ -1,12 +1,12 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
-import logo from '@/assets/images/logo-white.png';
-import profileDefault from '@/assets/images/profile.png';
-import { FaGoogle } from 'react-icons/fa';
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+"use client";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import logo from "@/assets/images/logo-white.png";
+import profileDefault from "@/assets/images/profile.png";
+import { FaGoogle } from "react-icons/fa";
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 // import UnreadMessageCount from './UnreadMessageCount';
 
 const Navbar = () => {
@@ -40,8 +40,7 @@ const Navbar = () => {
               className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
               aria-controls='mobile-menu'
               aria-expanded={isMobileMenuOpen}
-              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            >
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}>
               <span className='absolute -inset-0.5'></span>
               <span className='sr-only'>Open main menu</span>
               <svg
@@ -50,8 +49,7 @@ const Navbar = () => {
                 viewBox='0 0 24 24'
                 strokeWidth='1.5'
                 stroke='currentColor'
-                aria-hidden='true'
-              >
+                aria-hidden='true'>
                 <path
                   strokeLinecap='round'
                   strokeLinejoin='round'
@@ -76,29 +74,25 @@ const Navbar = () => {
                 <Link
                   href='/'
                   className={`${
-                    pathname === '/' ? 'bg-black' : ''
-                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
-                >
+                    pathname === "/" ? "bg-black" : ""
+                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}>
                   Home
                 </Link>
                 <Link
                   href='/properties'
                   className={`${
-                    pathname === '/properties' ? 'bg-black' : ''
-                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
-                >
+                    pathname === "/properties" ? "bg-black" : ""
+                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}>
                   Properties
                 </Link>
-                {session && (
-                  <Link
-                    href='/properties/add'
-                    className={`${
-                      pathname === '/properties/add' ? 'bg-black' : ''
-                    } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
-                  >
-                    Add Property
-                  </Link>
-                )}
+
+                <Link
+                  href='/properties/add'
+                  className={`${
+                    pathname === "/properties/add" ? "bg-black" : ""
+                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}>
+                  Add Property
+                </Link>
               </div>
             </div>
           </div>
@@ -112,8 +106,7 @@ const Navbar = () => {
                     <button
                       onClick={() => signIn(provider.id)}
                       key={index}
-                      className='flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
-                    >
+                      className='flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'>
                       <FaGoogle className='text-white mr-2' />
                       <span>Login or Register</span>
                     </button>
@@ -128,8 +121,7 @@ const Navbar = () => {
               <Link href='/messages' className='relative group'>
                 <button
                   type='button'
-                  className='relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
-                >
+                  className='relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                   <span className='absolute -inset-1.5'></span>
                   <span className='sr-only'>View notifications</span>
                   <svg
@@ -138,8 +130,7 @@ const Navbar = () => {
                     viewBox='0 0 24 24'
                     strokeWidth='1.5'
                     stroke='currentColor'
-                    aria-hidden='true'
-                  >
+                    aria-hidden='true'>
                     <path
                       strokeLinecap='round'
                       strokeLinejoin='round'
@@ -158,8 +149,7 @@ const Navbar = () => {
                     id='user-menu-button'
                     aria-expanded={isProfileMenuOpen}
                     aria-haspopup='true'
-                    onClick={() => setIsProfileMenuOpen((prev) => !prev)}
-                  >
+                    onClick={() => setIsProfileMenuOpen((prev) => !prev)}>
                     <span className='absolute -inset-1.5'></span>
                     <span className='sr-only'>Open user menu</span>
                     <Image
@@ -180,8 +170,7 @@ const Navbar = () => {
                     role='menu'
                     aria-orientation='vertical'
                     aria-labelledby='user-menu-button'
-                    tabIndex='-1'
-                  >
+                    tabIndex='-1'>
                     <Link
                       href='/profile'
                       className='block px-4 py-2 text-sm text-gray-700'
@@ -190,8 +179,7 @@ const Navbar = () => {
                       id='user-menu-item-0'
                       onClick={() => {
                         setIsProfileMenuOpen(false);
-                      }}
-                    >
+                      }}>
                       Your Profile
                     </Link>
                     <Link
@@ -202,8 +190,7 @@ const Navbar = () => {
                       id='user-menu-item-2'
                       onClick={() => {
                         setIsProfileMenuOpen(false);
-                      }}
-                    >
+                      }}>
                       Saved Properties
                     </Link>
                     <button
@@ -214,8 +201,7 @@ const Navbar = () => {
                       className='block px-4 py-2 text-sm text-gray-700'
                       role='menuitem'
                       tabIndex='-1'
-                      id='user-menu-item-2'
-                    >
+                      id='user-menu-item-2'>
                       Sign Out
                     </button>
                   </div>
@@ -233,29 +219,24 @@ const Navbar = () => {
             <Link
               href='/'
               className={`${
-                pathname === '/' ? 'bg-black' : ''
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
-            >
+                pathname === "/" ? "bg-black" : ""
+              } text-white block rounded-md px-3 py-2 text-base font-medium`}>
               Home
             </Link>
             <Link
               href='/properties'
               className={`${
-                pathname === '/properties' ? 'bg-black' : ''
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
-            >
+                pathname === "/properties" ? "bg-black" : ""
+              } text-white block rounded-md px-3 py-2 text-base font-medium`}>
               Properties
             </Link>
-            {session && (
-              <Link
-                href='/properties/add'
-                className={`${
-                  pathname === '/properties/add' ? 'bg-black' : ''
-                } text-white block rounded-md px-3 py-2 text-base font-medium`}
-              >
-                Add Property
-              </Link>
-            )}
+            <Link
+              href='/properties/add'
+              className={`${
+                pathname === "/properties/add" ? "bg-black" : ""
+              } text-white block rounded-md px-3 py-2 text-base font-medium`}>
+              Add Property
+            </Link>
 
             {!session &&
               providers &&
@@ -263,8 +244,7 @@ const Navbar = () => {
                 <button
                   onClick={() => signIn(provider.id)}
                   key={index}
-                  className='flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
-                >
+                  className='flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'>
                   <span>Login or Register</span>
                 </button>
               ))}
